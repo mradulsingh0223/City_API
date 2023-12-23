@@ -1,7 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
-import * as request from 'supertest';
+// import request from 'supertest';
 import { AppModule } from './../src/app.module';
+const request = require('supertest')
+
+declare var require
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
@@ -13,7 +16,7 @@ describe('AppController (e2e)', () => {
 
     app = moduleFixture.createNestApplication();
     await app.init();
-  },5000);
+  });
 
   it('/ (GET)', () => {
     return request(app.getHttpServer())
